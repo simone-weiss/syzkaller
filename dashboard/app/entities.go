@@ -914,7 +914,7 @@ func loadSimilarBugs(c context.Context, bug *Bug) ([]*Bug, error) {
 			return nil, err
 		}
 		for _, bug := range similar {
-			fmt.Printf("getNSConfig is %+v\n", bug))
+			fmt.Printf("getNSConfig is %+v\n", bug)
 			if getNsConfig(c, bug.Namespace).SimilarityDomain != domain ||
 				dedup[bug.keyHash(c)] {
 				continue
