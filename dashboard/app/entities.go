@@ -911,6 +911,7 @@ func loadSimilarBugs(c context.Context, bug *Bug) ([]*Bug, error) {
 			Filter("AltTitles=", title).
 			GetAll(c, &similar)
 		if err != nil {
+			fmt.Printf("Failed while quering db for similar bugs\n")
 			return nil, err
 		}
 		for _, bug := range similar {
