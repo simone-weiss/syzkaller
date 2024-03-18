@@ -911,11 +911,10 @@ func loadSimilarBugs(c context.Context, bug *Bug) ([]*Bug, error) {
 			Filter("AltTitles=", title).
 			GetAll(c, &similar)
 		if err != nil {
-			fmt.Printf("Failed while quering db for similar bugs\n")
 			return nil, err
 		}
-		fmt.Printf("Failed while quering db for similar bugs 2\n")
 		for _, bug := range similar {
+			fmt.Printf("getNSConfig is %+v\n", getNsConfig(c, bug.Namespace))
 			if getNsConfig(c, bug.Namespace).SimilarityDomain != domain ||
 				dedup[bug.keyHash(c)] {
 				continue
