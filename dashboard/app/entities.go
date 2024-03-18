@@ -914,13 +914,16 @@ func loadSimilarBugs(c context.Context, bug *Bug) ([]*Bug, error) {
 			fmt.Printf("Failed while quering db for similar bugs\n")
 			return nil, err
 		}
+		fmt.Printf("Failed while quering db for similar bugs 2\n")
 		for _, bug := range similar {
 			if getNsConfig(c, bug.Namespace).SimilarityDomain != domain ||
 				dedup[bug.keyHash(c)] {
 				continue
 			}
+			fmt.Printf("Failed while quering db for similar bugs 3\n")
 			dedup[bug.keyHash(c)] = true
 			ret = append(ret, bug)
+			fmt.Printf("Failed while quering db for similar bugs 4\n")
 		}
 	}
 	return ret, nil
